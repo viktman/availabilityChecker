@@ -14,13 +14,14 @@ namespace availabilityChecker
         public static string Name { get; set; }
         public static string Link { get; set; }
         public static string Status { get; set; }
+        public static DateTime UpdateTime { get; set; }
 
         private static string WebPage { get; set; }
 
         private const string ExpectedStatus = "Купить";
         private const string NeededStatus = "В наличии";
 
-        public static void UpdateWebPage()
+        private static void UpdateWebPage()
         {
             try
             {
@@ -31,7 +32,7 @@ namespace availabilityChecker
             {
                 WebPage = e.Message;
             }
-
+            UpdateTime = DateTime.Now;
         }
 
         private static void UpdateName()
